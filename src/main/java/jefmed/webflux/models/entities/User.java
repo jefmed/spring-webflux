@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 public class User {
 
     @Id
-    private String id;
+    private String code;
 
     private String name;
 }

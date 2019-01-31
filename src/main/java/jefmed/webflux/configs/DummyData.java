@@ -21,7 +21,7 @@ public class DummyData implements CommandLineRunner {
     public void run(String... args) throws Exception {
         userRepository.deleteAll()
                 .thenMany(Flux.just("nhanha", "joaquim", "alice")
-                        .map(nome -> new User(UUID.randomUUID().toString(), nome))
-                        .flatMap(userRepository::save)).subscribe(System.out::println);
+                        .map(name -> new User(UUID.randomUUID().toString(), name))
+                        .flatMap(userRepository::save)).subscribe();
     }
 }
