@@ -26,7 +26,8 @@ public class UserService {
     }
 
     public Mono<Void> deleteUser(String code){
-        return userRepository.deleteById(code);
+        return userRepository.findById(code)
+                .flatMap(existingUser -> userRepository.deleteById(existingUser.getCode()));
     }
 
     public Mono<User> updateUser(String code, User user){
